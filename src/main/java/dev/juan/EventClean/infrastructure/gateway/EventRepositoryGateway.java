@@ -2,6 +2,8 @@ package dev.juan.EventClean.infrastructure.gateway;
 
 import dev.juan.EventClean.core.entities.Event;
 import dev.juan.EventClean.core.gateway.EventGateway;
+import dev.juan.EventClean.infrastructure.mapper.EventEntityMapper;
+import dev.juan.EventClean.infrastructure.persistence.EventEntity;
 import dev.juan.EventClean.infrastructure.persistence.EventRepository;
 import org.springframework.stereotype.Component;
 
@@ -9,13 +11,17 @@ import org.springframework.stereotype.Component;
 public class EventRepositoryGateway implements EventGateway {
 
     private final EventRepository eventRepository;
+    private final EventEntityMapper eventEntityMapper;
 
-    public EventRepositoryGateway(EventRepository eventRepository) {
+    public EventRepositoryGateway(EventRepository eventRepository, EventEntityMapper eventEntityMapper) {
         this.eventRepository = eventRepository;
+        this.eventEntityMapper = eventEntityMapper;
     }
 
     @Override
     public Event createEvent(Event event) {
-        return eventRepository.save(Event);
+        EventEntity eventEntity = eventEntityMapper.toEntity(event);
+        EventEntity newEvent = eventRepository.save(eventEntity);
+        return eventEntityMapper.toDomain(newEvent);
     }
 }
