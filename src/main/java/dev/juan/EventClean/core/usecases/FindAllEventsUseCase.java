@@ -2,7 +2,9 @@ package dev.juan.EventClean.core.usecases;
 
 import dev.juan.EventClean.core.entities.Event;
 
+import java.util.List;
+
 public interface FindEventUseCase {
 
-    public Event execute(Event event);
+    public List<Event> execute();
 }
