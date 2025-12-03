@@ -5,11 +5,11 @@ import dev.juan.EventClean.core.gateway.EventGateway;
 
 import java.util.List;
 
-public class FindEventUseCaseImpl implements FindEventUseCase {
+public class FindAllEventsUseCaseImpl implements FindAllEventsUseCase {
 
     private final EventGateway eventGateway;
 
-    public FindEventUseCaseImpl(EventGateway eventGateway) {
+    public FindAllEventsUseCaseImpl(EventGateway eventGateway) {
         this.eventGateway = eventGateway;
     }
 

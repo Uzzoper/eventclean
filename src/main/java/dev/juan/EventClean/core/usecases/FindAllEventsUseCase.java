@@ -4,7 +4,7 @@ import dev.juan.EventClean.core.entities.Event;
 
 import java.util.List;
 
-public interface FindEventUseCase {
+public interface FindAllEventsUseCase {
 
     public List<Event> execute();
 }
