@@ -19,4 +19,13 @@ public class ControllerExceptionHandler {
         response.put("Message: ", "Please insert a valid identifier for your event and try again.");
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(NotFoundEventException.class)
+    public ResponseEntity<Map<String, String>> handleNotFoundEventException(NotFoundEventException ex) {
+
+        Map<String, String> response = new HashMap<>();
+        response.put("Error: ", ex.getMessage());
+        response.put("Message: ", "Event not found. Please verify your indentifier");
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
 }

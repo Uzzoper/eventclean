@@ -8,6 +8,7 @@ import dev.juan.EventClean.infrastructure.persistence.EventRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class EventRepositoryGateway implements EventGateway {
@@ -38,5 +39,10 @@ public class EventRepositoryGateway implements EventGateway {
     public boolean existsByIdentifier(String identifier) {
         return eventRepository.findAll().stream()
                 .anyMatch(event -> event.getIdentifier().equalsIgnoreCase(identifier));
+    }
+
+    @Override
+    public Optional<Event> findEventByIdentifier(String identifier) {
+        return eventRepository.findEventByIdentifier(identifier);
     }
 }

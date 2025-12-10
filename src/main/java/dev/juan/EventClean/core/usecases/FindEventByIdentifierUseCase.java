@@ -6,5 +6,5 @@ import java.util.Optional;
 
 public interface FindEventByIdentifierUseCase {
 
-    public Optional<Event> execute(String identier);
+    public Event execute(String identier);
 }
